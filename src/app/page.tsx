@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CardSpotlightDemo from "../components/cards/spotlight/CardSpotlightDemo";
 
 const getProducts = async () => {
   const response = await fetch("https://fakestoreapi.com/products");
@@ -17,8 +18,8 @@ export default async function Home() {
   const products = await getProducts();
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-fuchsia-300">
-      <div>
+    <div className="flex flex-col bg-fuchsia-300 gap-4 p-4">
+      <div className="bg-amber-500 p-4">
         <h1>Hi Next js</h1>
         <Link href="/team">
           click me to go to team page
@@ -38,6 +39,17 @@ export default async function Home() {
             </div>
           )
         })
+        }
+      </div>
+      <div className="flex flex-wrap justify-evenly gap-4 p-4 bg-amber-500">
+        {
+          products.map((product: Product) => {
+            return (
+              <div key={product.id}>
+                <CardSpotlightDemo product={product} />
+              </div>
+            )
+          })
         }
       </div>
     </div>
