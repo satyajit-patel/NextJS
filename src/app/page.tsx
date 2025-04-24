@@ -1,5 +1,5 @@
 import Link from "next/link";
-import CardSpotlightDemo from "../components/cards/spotlight/CardSpotlightDemo";
+import CardSpotlightDemo from "../components/spot-light/CardSpotlightDemo"
 
 const getProducts = async () => {
   const response = await fetch("https://fakestoreapi.com/products");
@@ -26,6 +26,9 @@ export default async function Home() {
         </Link>
       </div>
       <div>
+        <CardSpotlightDemo />
+      </div>
+      <div>
         {
         products.map((product: Product) => {
           return (
@@ -39,17 +42,6 @@ export default async function Home() {
             </div>
           )
         })
-        }
-      </div>
-      <div className="flex flex-wrap justify-evenly gap-4 p-4 bg-amber-500">
-        {
-          products.map((product: Product) => {
-            return (
-              <div key={product.id}>
-                <CardSpotlightDemo product={product} />
-              </div>
-            )
-          })
         }
       </div>
     </div>
